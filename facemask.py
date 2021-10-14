@@ -11,8 +11,8 @@ from tensorflow.keras import layers
 from tensorflow.keras import models
 from tensorflow.keras import optimizers
 
-train_dir = './train'
-val_dir='./validate'
+train_dir = './Train'
+val_dir='./Validation'
 
 
 train_datagen = ImageDataGenerator(
@@ -61,9 +61,9 @@ checkpoint_c1= keras.callbacks.ModelCheckpoint("best_facemask.h5",save_best_only
 history = model.fit_generator(
     train_generator,
     steps_per_epoch=100,
-    epochs=20,
+    epochs=15,
     validation_data=validaton_generator,
-    validation_steps=50,
+    validation_steps=20,
     callbacks = [checkpoint_c1]
 )
 pd.DataFrame(history.history).plot(figsize=(8,5))
